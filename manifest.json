@@ -4,8 +4,9 @@
     "version": "1.0.0",
     "author": "watcher",
     "description": "a chrome plugin for test",
-    "action": {
-        "default_popup": "html/popup.html"
+    "icons": {
+        "16": "images/icon-16.png",
+        "48": "images/icon-48.png"
     },
     "background": {
         "service_worker": "js/background.js",
@@ -17,6 +18,16 @@
             "js": ["js/jquery-3.6.0.min.js", "js/content.js"],
             "run_at": "document_start"
         }
+    ],
+    "permissions": [
+        "contextMenus",
+        "notifications",
+        "tabs",
+        "activeTab",
+        "background"
+    ],
+    "host_permissions": [
+        "*://*/*"
     ],
     "default_locale": "zh_CN"
 }

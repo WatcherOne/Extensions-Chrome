@@ -114,3 +114,9 @@
 
 - 参考文档
 [https://blog.csdn.net/Primary_wind/article/details/128053613]
+[http://www.huazhaox.com/article/1618]
+
+
+"action": {
+        "default_popup": "html/popup.html"
+    }
