@@ -1,6 +1,12 @@
 ### chrome 插件（Manifest V3）
 
-- 文件结构
+#### 功能说明
+
+1. 网页颜色提取
+2. 选取文字翻译
+3. JSON美化格式
+
+#### 文件结构
 
 | manifest.json
 |-html
@@ -44,10 +50,6 @@
             <td>描述扩展</td>
         </tr>
         <tr>
-            <td>description</td>
-            <td>描述扩展</td>
-        </tr>
-        <tr>
             <td>default_locale</td>
             <td>默认语言环境, 当配置时, 对应目录 _locales 是必需的</td>
         </tr>
@@ -71,6 +73,19 @@
             </td>
         </tr>
         <tr>
+            <td>background</td>
+            <td>
+                {
+                    "service_worker": "background.js",
+                    "type": "module"  // 将服务工作者作为 ES 模块
+                }
+                指定扩展进程的运行环境以及运行脚本
+                它随着浏览器的打开而打开，随着浏览器的关闭而关闭，所以通常把需要一直运行的、启动就运行的、全局的代码放在background里面
+                background的权限非常高，几乎可以调用所有的Chrome扩展API
+                扩展在字段下的清单中注册他们的服务工作者, 指定单个JS文件的键
+            </td>
+        </tr>
+        <tr>
             <td>content_scripts</td>
             <td>
                 [
@@ -81,28 +96,23 @@
                         "run_at":                  // 指定何时应将脚本注入页面, 默认 "document_idle" / document_start / document_end
                     }
                 ]
+                指定web页面运行的脚本/插入的CSS/插入时机
             </td>
         </tr>
         <tr>
             <td>action</td>
             <td>
                 {
+                    "default_icon": {
+                        "16": "images/icon16.png",   
+                        <!-- "24": "images/icon24.png",    -->
+                        <!-- "32": "images/icon32.png" -->
+                    }
                     "default_title": "all in plugin"
                     "default_popup": "popup.html"
                 }
                 chrome.actionAPI 控制 Google Chrome 工具栏中的扩展程序图标
-            </td>
-        </tr>
-        <tr>
-            <td>background</td>
-            <td>
-                {
-                    "service_worker": "background.js",
-                    "type": "module"  // 将服务工作者作为 ES 模块
-                }
-                它随着浏览器的打开而打开，随着浏览器的关闭而关闭，所以通常把需要一直运行的、启动就运行的、全局的代码放在background里面
-                background的权限非常高，几乎可以调用所有的Chrome扩展API
-                扩展在字段下的清单中注册他们的服务工作者, 指定单个JS文件的键
+                default_popup 是点击 chrome 按钮弹出的页面
             </td>
         </tr>
         <tr>
