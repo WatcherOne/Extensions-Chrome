@@ -1,3 +1,11 @@
+// const link = document.createElement('link')
+// link.href = chrome.runtime.getURL('css/common.css')
+// link.type = 'text/css'
+// link.rel = 'stylesheet'
+// document.getElementsByTagName('head')[0].appendChild(link)
+
+console.log('main', document)
+
 // 监听 background 页面发来的消息
 chrome.runtime.onMessage.addListener(request => {
     console.log(request)

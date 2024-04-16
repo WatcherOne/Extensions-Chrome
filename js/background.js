@@ -1,5 +1,11 @@
-import { http } from './http.js'
-console.log(http)
+import { httpGetCurrency } from '../http/currency.js'
+import './omnibox/index.js'
+
+// 安装插件时就去获取汇率比率, 执行一次
+httpGetCurrency().then(rateList => {
+    chrome.storage.local.set({ rateList })
+})
+// Todo: 设置定时闹钟 alarms 去实时更新汇率
 
 // 创建上下文菜单
 const contextMenus = [
@@ -40,9 +46,9 @@ function createMenus (contextMenus, parentId = 0) {
 }
 
 // V3 后只能用这种方式监听, 不能配置绑定onclick
-chrome.contextMenus.onClicked.addListener((info, tab) => {
-    const { parentMenuItemId, menuItemId, selectionText } = info
-    if (parentMenuItemId === 'translate' && selectionText) {
+// chrome.contextMenus.onClicked.addListener((info, tab) => {
+//     const { parentMenuItemId, menuItemId, selectionText } = info
+//     if (parentMenuItemId === 'translate' && selectionText) {
         // chrome.windows.create({
         //     url: `https://fanyi.baidu.com/#${menuItemId}/${selectionText}`,
         //     type: "popup",
@@ -74,21 +80,21 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
         // }).then(res => {
         //     console.log(res)
         // })
-        chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
-            chrome.tabs.sendMessage(tabs[0].id, {
-                todo: 'closeModal'
-            })
-        })
+//         chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
+//             chrome.tabs.sendMessage(tabs[0].id, {
+//                 todo: 'closeModal'
+//             })
+//         })
         
-        // $(mask).appendTo(document.body);
-        // $(addLogModal).appendTo(document.body);
-        // $("#mask").click(closeAddLogModal);
-        // $("#save").click(onSave);
-    }
-})
+//         // $(mask).appendTo(document.body);
+//         // $(addLogModal).appendTo(document.body);
+//         // $("#mask").click(closeAddLogModal);
+//         // $("#save").click(onSave);
+//     }
+// })
 
 // 创建上下文
-createMenus(contextMenus)
+// createMenus(contextMenus)
 
 //**
 // chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {

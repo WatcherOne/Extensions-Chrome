@@ -1,11 +1,32 @@
 {
-    "appName": {
-        "message": "Chrome插件基础demo"
+    "welcomeOmnibox": {
+        "message": "欢迎进入功能框搜索"
     },
-    "appDescription": {
-        "message": "一款带你十分钟入门Chrome插件开发的基础demo"
+    "USD": {
+        "message": "美元币"
     },
-    "helloWorld": {
-        "message": "Hello World"
+    "CNY": {
+        "message": "人民币"
+    },
+    "JPY": {
+        "message": "日本币"
+    },
+    "TWD": {
+        "message": "台湾币"
+    },
+    "HKD": {
+        "message": "香港币"
+    },
+    "SGD": {
+        "message": "新加坡"
+    },
+    "KRW": {
+        "message": "韩国币"
+    },
+    "ARS": {
+        "message": "阿根廷"
+    },
+    "VND": {
+        "message": "越南币"
     }
 }

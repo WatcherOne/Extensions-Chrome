@@ -109,10 +109,21 @@
                         <!-- "32": "images/icon32.png" -->
                     }
                     "default_title": "all in plugin"
-                    "default_popup": "popup.html"
+                    "default_popup": "html/popup.html"
                 }
                 chrome.actionAPI 控制 Google Chrome 工具栏中的扩展程序图标
                 default_popup 是点击 chrome 按钮弹出的页面
+            </td>
+        </tr>
+        <tr>
+            <td>permissions</td>
+            <td>
+                // API 权限, 需要使用某些API时需要设置该API权限才行
+                // API查询地址: https://developer.chrome.com/docs/extensions/reference/api?hl=zh-cn
+                [
+                    'contextMenus',
+                    'tabs'
+                ]
             </td>
         </tr>
         <tr>
@@ -122,11 +133,28 @@
     </tbody>
 </table>
 
-- 参考文档
-[https://blog.csdn.net/Primary_wind/article/details/128053613]
-[http://www.huazhaox.com/article/1618]
+#### 参考文档
+
+[chrome查询API](https://developer.chrome.com/docs/extensions/reference/api?hl=zh-cn)
+[参考文章](https://blog.csdn.net/Primary_wind/article/details/128053613)
+
+// Todo: 切换语言
+
+// Todo
+
+"content_scripts": [
+{
+    "matches": ["<all_urls>"],
+    "css": ["css/common.css"],
+    "js": ["js/jquery-3.6.0.min.js", "js/content.js"],
+    "run_at": "document_start"
+}
+]
 
 
-"action": {
-        "default_popup": "html/popup.html"
-    }
+        "contextMenus",
+        "notifications",
+        "tabs",
+        "activeTab",
+        "background",
+        "scripting",

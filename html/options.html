@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>配置选项</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/options.css">
+</head>
+<body>
+    <div class="setting-wrapper">
+        <div class="setting-container">
+            <div class="top">WATCHER</div>
+            <div class="box">
+                <div class="title">Options配置</div>
+                <div class="content">
+                    <div class="form-item">
+                        <div class="label">颜色格式</div>
+                        <div class="input-box">
+                            <div class="input-item">
+                                <input id="show-lowercase" type="checkbox">
+                                <label for="show-lowercase">显示小写十六进制</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-item">
+                        <div class="label">自动复制</div>
+                        <div class="input-box">
+                            <div class="input-item">
+                                <input id="auto-copy" type="checkbox">
+                                <label for="auto-copy">自动将拾取的颜色复制到剪贴板</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-item">
+                        <div class="label"></div>
+                        <div class="input-box">
+                            <div class="input-item">
+                                <input id="is-sync" type="checkbox">
+                                <label for="is-sync">是否同步用户</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bottom-btn">
+                        <button type="button" id="save" class="save-btn">保存</button>
+                        <span id="tips" class="tips"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../js/options.js"></script>
+</html>

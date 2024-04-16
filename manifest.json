@@ -1,33 +1,29 @@
 {
     "manifest_version": 3,
-    "name": "chrome-plugin",
+    "name": "watcher",
     "version": "1.0.0",
-    "author": "watcher",
-    "description": "a chrome plugin",
+    "author": {
+        "email": "zhubo.watcher@gmail.com"
+    },
+    "description": "A Chrome Extension for Developer Use",
     "icons": {
         "16": "images/icon-16.png",
         "48": "images/icon-48.png"
+    },
+    "options_page": "html/options.html",
+    "action": {
+        "default_popup": "html/popup.html"
     },
     "background": {
         "service_worker": "js/background.js",
         "type": "module"
     },
-    "content_scripts": [
-        {
-            "matches": ["<all_urls>"],
-            "js": ["js/jquery-3.6.0.min.js", "js/content.js"],
-            "run_at": "document_start"
-        }
-    ],
     "permissions": [
-        "contextMenus",
-        "notifications",
-        "tabs",
-        "activeTab",
-        "background"
+        "storage",
+        "alarms"
     ],
-    "host_permissions": [
-        "*://*/*"
-    ],
+    "omnibox": {
+        "keyword": "w."
+    },
     "default_locale": "zh_CN"
 }

@@ -1,0 +1,91 @@
+.setting-wrapper {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 80px;
+    box-sizing: border-box; 
+}
+
+.setting-wrapper .setting-container {
+    min-width: 500px;
+}
+
+.setting-container .top {
+    height: 50px;
+    background-image: linear-gradient(to right, blue, #66FFFF 10%, #CC00FF 20%, #CC00CC 30%, #CCCCFF 40%, #00FFFF 50%, #CCCCFF 60%, #CC00CC 70%, #CC00FF 80%, #66FFFF 90%, blue 100%);
+    background-size: 200% 100%;
+    -webkit-text-fill-color: transparent;
+    animation: masked 4s linear infinite;
+    font-size: 35px;
+    background-clip: text;
+    margin-bottom: 10px;
+}
+
+@keyframes masked {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: -100% 0;
+    }
+}
+
+.setting-container .box {
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    box-shadow: 0 0 8px 2px rgba(0,0,0,.1);
+}
+
+.box .title {
+    font-size: 20px;
+    font-weight: 400;
+    color: #202020;
+    padding: 20px 20px;
+    margin-bottom: 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.content {
+    padding: 40px 50px 25px;
+}
+
+.content .form-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+
+.content .form-item .label {
+    min-width: 80px;
+    margin-right: 10px;
+    color: #404040;
+    font-size: 14px;
+}
+
+.content .form-item .input-box .input-item {
+    margin-bottom: 5px;
+}
+
+.content .form-item .input-box .input-item input[type="checkbox"] {
+    position: relative;
+    top: 1px;
+}
+
+.content .form-item .input-box .input-item label {
+    font-size: 16px;
+    color: #202020;
+}
+
+.content .bottom-btn {
+    margin-top: 30px;
+}
+
+.content .bottom-btn .save-btn {
+    border: 1px solid #ddd;
+}
+
+.content .bottom-btn .tips {
+    font-size: 14px;
+    margin-left: 10px;
+    color: forestgreen;
+}

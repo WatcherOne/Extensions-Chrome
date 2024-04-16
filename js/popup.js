@@ -1,13 +1,37 @@
 $(function () {
     showHello();
-    showlogList();
+    // showlogList();
 });
+
+document.getElementById('setting').addEventListener('click', () => {
+    if (chrome.runtime.openOptionsPage) {
+        chrome.runtime.openOptionsPage()
+    } else {
+        window.open(chrome.runtime.getURL('html/options.html'))
+    }
+})
+
+const wind = chrome.extension.getBackgroundPage()
+console.log(wind)
 
 // 使用国际化语言展示Hello World(这里为了始终显示英文，所以_locales文件夹中的helloWorld中英文设置的一样)
 function showHello() {
     const hello = chrome.i18n.getMessage("helloWorld");
     $(".hello")[0]?.append(hello);
 }
+
+document.getElementById('openPicker').addEventListener('click', async () => {
+    // console.log(chrome)
+    // $(".hello")[0]?.append(JSON.stringify(chrome));
+    const windows = await chrome.windows.getCurrent()
+    const queryOptions = { active: true, lastFocusedWindow: true }
+    const [tab] = await chrome.tabs.query(queryOptions)
+
+    chrome.scripting.executeScript({
+      target: { tabId: tab.id },
+      files: ['/js/jquery-3.6.0.min.js', '/js/common.js', '/js/contentScript.js'],
+    })
+})
 
 // 展示日志列表
 function showlogList() {
