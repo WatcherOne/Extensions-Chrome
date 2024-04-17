@@ -1,5 +1,5 @@
 import { NATION_LIST, NATION_OBJ } from '../constant/index.js'
-import { isNumbericCurrency, getExchangeValue } from '../utils.js'
+import { isNumbericCurrency, getExchangeValue } from '../utils/index.js'
 
 // 汇算计算格式: 金额 ?+ 国家
 export const handleInputCurrency = async (text, suggest) => {

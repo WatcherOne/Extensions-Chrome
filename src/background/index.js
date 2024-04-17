@@ -1,11 +1,39 @@
-import { httpGetCurrency } from '../http/currency.js'
-import './omnibox/index.js'
+import { httpGetCurrency } from '../api/currency.js'
+import { getCurrentTab } from '../utils/index.js'
+import '../omnibox/index.js'
 
 // 安装插件时就去获取汇率比率, 执行一次
 httpGetCurrency().then(rateList => {
     chrome.storage.local.set({ rateList })
 })
 // Todo: 设置定时闹钟 alarms 去实时更新汇率
+
+// 监听消息事件
+chrome.runtime.onMessage.addListener(message => {
+    switch (message.action) {
+        case 'picker': startPicker(message); break;
+        case 'pickerEnd': handlePickerResult(message); break
+    }
+    return true
+})
+
+async function startPicker (message) {
+    // 接收到picker行动后, 回消息关闭popup
+    await chrome.runtime.sendMessage({ action: 'popup-close' })
+    const tab = await getCurrentTab()
+    // 向`内容脚本`发送消息
+    tab && chrome.tabs.sendMessage(tab.id, message)
+}
+
+async function handlePickerResult (message) {
+    const { sRGBHex } = message
+    // 存入local
+    let { pickerColorList } = await chrome.storage.local.get('pickerColorList')
+    pickerColorList = pickerColorList ? [...pickerColorList, sRGBHex] : [sRGBHex]
+    chrome.storage.local.set({ pickerColorList })
+}
+
+
 
 // 创建上下文菜单
 const contextMenus = [
@@ -105,18 +133,24 @@ function createMenus (contextMenus, parentId = 0) {
 //     });
 // });
 
-
 // 监听content_scripts页面发来的消息
-chrome.runtime.onMessage.addListener((request) => {
-    console.log("接收到content_scripts消息：", request);
-    // if (request.todo === "saveLog") {
-    //     saveLog(request.data);
-    // }
-    const from = 'zh'
-    const to = 'en'
-    const selectionText = '测试数据'
-    fetch('https://fanyi-api.baidu.com/api/trans/vip/translate')
-    // http.get({
+// chrome.runtime.onMessage.addListener((request) => {
+//     console.log("background接收的消息: ", request)
+
+//     const queryOptions = { active: true, currentWindow: true }
+//     chrome.tabs.query(queryOptions, (tabs) => {
+//         const tab = tabs[0]
+//         tab && chrome.tabs.sendMessage(tab.id, 'background发出的消息')
+//     })
+//     chrome.runtime.sendMessage('background发出的runtime消息')
+//     // if (request.todo === "saveLog") {
+//     //     saveLog(request.data);
+//     // }
+//     const from = 'zh'
+//     const to = 'en'
+//     const selectionText = '测试数据'
+//     fetch('https://fanyi-api.baidu.com/api/trans/vip/translate')
+//     // http.get({
     //     url: 'https://fanyi.baidu.com/v2transapi',
     //     param: { from, to },
     //     data: {
@@ -129,7 +163,7 @@ chrome.runtime.onMessage.addListener((request) => {
     // }).then(res => {
     //     console.log(res)
     // })
-})
+// })
 
 // // 监听系统消息通知的按钮点击事件
 // chrome.notifications.onButtonClicked.addListener((notificationId) => {

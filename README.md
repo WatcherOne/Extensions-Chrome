@@ -140,15 +140,6 @@
 
 // Todo: 切换语言
 
-// Todo
-
-"content_scripts": [
-{
-    "matches": ["<all_urls>"],
-    "css": ["css/common.css"],
-    "js": ["js/jquery-3.6.0.min.js", "js/content.js"],
-    "run_at": "document_start"
-}
 ]
 
 
@@ -158,3 +149,6 @@
         "activeTab",
         "background",
         "scripting",
+
+
+- chrome.alarms   // 需要给 "alarms" 权限

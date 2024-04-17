@@ -1,4 +1,4 @@
-import { CHECK_LIST } from './constant/index.js'
+import { CHECK_LIST } from '../constant/index.js'
 
 // 判断是否是金额类数据, 小数点4位
 export const isNumbericCurrency = (value) => {
@@ -15,4 +15,12 @@ export const getExchangeValue = async (value, baseNation = 'CNY') => {
         const newValue = parseFloat((currRate / baseRate) * value).toFixed(2)
         return { key, value: newValue }
     })
+}
+
+// 获得当前页面
+export const getCurrentTab = async () => {
+    // 使用 lastFocusedWindow 还找不到当前标签页
+    const queryOptions = { active: true, currentWindow: true }
+    const [tab] = await chrome.tabs.query(queryOptions)
+    return tab
 }

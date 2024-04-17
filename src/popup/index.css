@@ -1,0 +1,26 @@
+.color-picker-wrapper {
+    padding: 5px 0;
+}
+
+.color-picker-wrapper .item {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    padding: 5px 20px 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.color-picker-wrapper .item:hover {
+    background-color: #e8e8e8;
+}
+
+.color-picker-wrapper .item .title {
+    white-space: nowrap;
+    margin-left: 10px;
+}
+
+.markline {
+    border-bottom: 1px solid #ddd;
+    margin: 5px 0;
+}

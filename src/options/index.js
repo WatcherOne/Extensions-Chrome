@@ -27,6 +27,6 @@ window.onload = async () => {
         $result.innerHTML = '保存成功'
         setTimeout(() => ($result.innerHTML = ''), 1500)
     }
+    
+    console.log(await chrome.storage.local.get('pickerColorList'))
 }
-
-
