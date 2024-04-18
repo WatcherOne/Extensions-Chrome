@@ -22,6 +22,7 @@
         {
             "matches": ["<all_urls>"],
             "js": ["src/content/index.js"],
+            "css": ["src/content/index.css"],
             "run_at": "document_start"
         }
     ],
@@ -29,10 +30,20 @@
         "storage",
         "tabs",
         "activeTab",
-        "alarms"
+        "alarms",
+        "webRequest"
     ],
     "omnibox": {
         "keyword": "w."
+    },
+    "commands": {
+        "color-copy": {
+            "suggested_key": {
+                "default": "Ctrl+Shift+L",
+                "mac": "Command+Shift+L"
+            },
+            "description": "you can picker color to copy board"
+        }
     },
     "host_permissions": ["*://*/*"],
     "default_locale": "zh_CN"

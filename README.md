@@ -135,20 +135,14 @@
 
 #### 参考文档
 
-[chrome查询API](https://developer.chrome.com/docs/extensions/reference/api?hl=zh-cn)
-[参考文章](https://blog.csdn.net/Primary_wind/article/details/128053613)
+[官方chrome查询API](https://developer.chrome.com/docs/extensions/reference/api?hl=zh-cn)
 
-// Todo: 切换语言
+##### 参考文章
 
-]
-
-
-        "contextMenus",
-        "notifications",
-        "tabs",
-        "activeTab",
-        "background",
-        "scripting",
+- [](https://blog.csdn.net/Primary_wind/article/details/128053613)
 
 
+// Todo
+
+- notifications
 - chrome.alarms   // 需要给 "alarms" 权限

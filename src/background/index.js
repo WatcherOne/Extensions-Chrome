@@ -11,28 +11,15 @@ httpGetCurrency().then(rateList => {
 // 监听消息事件
 chrome.runtime.onMessage.addListener(message => {
     switch (message.action) {
-        case 'picker': startPicker(message); break;
-        case 'pickerEnd': handlePickerResult(message); break
+        case 'copy': sendToContent(message); break;
     }
-    return true
 })
 
-async function startPicker (message) {
-    // 接收到picker行动后, 回消息关闭popup
-    await chrome.runtime.sendMessage({ action: 'popup-close' })
-    const tab = await getCurrentTab()
-    // 向`内容脚本`发送消息
-    tab && chrome.tabs.sendMessage(tab.id, message)
+function sendToContent (message) {
+    getCurrentTab().then(tab => {
+        chrome.tabs.sendMessage(tab.id, message)
+    })
 }
-
-async function handlePickerResult (message) {
-    const { sRGBHex } = message
-    // 存入local
-    let { pickerColorList } = await chrome.storage.local.get('pickerColorList')
-    pickerColorList = pickerColorList ? [...pickerColorList, sRGBHex] : [sRGBHex]
-    chrome.storage.local.set({ pickerColorList })
-}
-
 
 
 // 创建上下文菜单

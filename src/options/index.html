@@ -15,20 +15,29 @@
                 <div class="title">Options配置</div>
                 <div class="content">
                     <div class="form-item">
-                        <div class="label">颜色格式</div>
-                        <div class="input-box">
-                            <div class="input-item">
-                                <input id="show-lowercase" type="checkbox">
-                                <label for="show-lowercase">显示小写十六进制</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-item">
                         <div class="label">自动复制</div>
                         <div class="input-box">
                             <div class="input-item">
                                 <input id="auto-copy" type="checkbox">
                                 <label for="auto-copy">自动将拾取的颜色复制到剪贴板</label>
+                            </div>
+                            <div class="input-item">
+                                <label style="margin-left:24px">自动复制颜色格式: </label>
+                                <select id="select-format" class="color-format">
+                                    <option value="#rrggbb" id="mark-option">#rrggbb</option>
+                                    <option value="rrggbb" id="no-mark-option">rrggbb</option>
+                                    <option value="rgb">rgb(R, G, B)</option>
+                                    <option value="hsl">hsl(H, S%, L%)</option>
+                                </select> 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-item">
+                        <div class="label">颜色格式</div>
+                        <div class="input-box">
+                            <div class="input-item">
+                                <input id="show-lowercase" type="checkbox">
+                                <label for="show-lowercase">显示小写十六进制</label>
                             </div>
                         </div>
                     </div>

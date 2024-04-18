@@ -1,3 +1,12 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+.hide {
+    display: none;
+}
+
 .color-picker-wrapper {
     padding: 5px 0;
 }
@@ -6,7 +15,7 @@
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
-    padding: 5px 20px 5px 10px;
+    padding: 5px 25px 5px 15px;
     border-radius: 3px;
     cursor: pointer;
 }
@@ -24,3 +33,140 @@
     border-bottom: 1px solid #ddd;
     margin: 5px 0;
 }
+
+.color-records-wrapper {
+    padding: 10px 20px 15px;
+}
+
+.color-records-wrapper .title {
+    font-size: 14px;
+    color: #444;
+    white-space: nowrap;
+    margin-bottom: 5px;
+}
+
+.color-records-wrapper .container {
+    display: flex;
+    flex-wrap: nowrap;
+    margin-top: 10px;
+}
+
+.color-records-wrapper .container .box {
+    width: 200px;
+    height: 120px;
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1;
+    margin-right: 15px;
+}
+
+.color-records-wrapper .container .box .color-item {
+    width: 20px;
+    height: 20px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    cursor: not-allowed;
+}
+
+.color-records-wrapper .container .result {
+    width: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.color-records-wrapper .container .result .show-value {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.color-records-wrapper .container .result .show-value .format-label {
+    margin-right: 5px;
+    font-size: 12px;
+}
+
+.color-records-wrapper .container .result .show-value .color-value {
+    background-color: white;
+    width: calc(100% - 29px);
+    height: 22px;
+    line-height: 19px;
+    box-sizing: border-box;
+    white-space: nowrap;
+    font-size: 12px;
+    border: 1px solid #ddd;
+    padding: 0 5px;
+}
+
+.color-records-wrapper .container .result .curr-color {
+    border: 1px solid #ddd;
+    background-color: white;
+    width: 100%;
+    height: 24px;
+    box-sizing: border-box;
+    white-space: nowrap;
+    text-align: center;
+}
+
+.color-records-wrapper .operation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+    margin-top: 12px;
+}
+
+.color-records-wrapper .operation button {
+    white-space: nowrap;
+    outline: none;
+    text-align: center;
+    cursor: pointer;
+    box-sizing: border-box;
+    padding: 3px 15px;
+    border-radius: 3px;
+    font-size: 12px;
+    border: 1px solid;
+    color: white;
+}
+
+.color-records-wrapper .operation .confirm-button {
+    background-color: #55a0b9;
+    border-color: #55a0b9;
+}
+
+.color-records-wrapper .operation .cancel-button {
+    background-color: #daa155;
+    border-color: #daa155;
+} 
+
+.color-records-wrapper .operation .clear-button {
+    background-color: lightcoral;
+    border-color: lightcoral;
+}
+
+.color-web-wrapper .web-container {
+    width: 323px;
+    min-height: 50px;
+    border: 1px dotted #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+.color-web-wrapper .web-container .box {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.color-web-wrapper .web-container .box .web-color-item {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+

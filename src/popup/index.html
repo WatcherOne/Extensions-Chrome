@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>watcher</title>
-    <link rel="stylesheet" href="../styles/common.css">
     <link rel="stylesheet" href="./index.css">
 </head>
 <body>
@@ -15,9 +14,13 @@
             <div class="title">点击拾取颜色</div>
         </div>
         <div class="markline"></div>
-        <div id="openPicker" class="item">
+        <div id="openRecord" class="item">
             <svg t="1713324060046" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="37954" width="18" height="18"><path d="M862.315789 188.523789h-80.842105V121.263158a67.314526 67.314526 0 1 0-134.629052 0V188.631579H377.263158v-67.368421a67.314526 67.314526 0 1 0-134.736842 0V188.631579H161.684211c-59.499789 0-107.789474 48.235789-107.789474 107.789474V862.315789C53.894737 921.815579 102.184421 970.105263 161.684211 970.105263h700.631578c59.499789 0 107.789474-48.289684 107.789474-107.789474V296.421053c0-59.607579-48.289684-107.897263-107.789474-107.897264zM727.578947 781.473684h-431.157894a53.894737 53.894737 0 0 1 0-107.789473h431.157894a53.894737 53.894737 0 0 1 0 107.789473z m0-242.526316h-431.157894a53.894737 53.894737 0 0 1 0-107.897263h431.157894a53.894737 53.894737 0 0 1 0 107.843369z" fill="#5A93F8" p-id="37955"></path></svg>
             <div class="title">拾取的颜色历史</div>
+        </div>
+        <div id="webPicker" class="item">
+            <svg t="1713433589141" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2433" width="18" height="18"><path d="M128 928h768c35.3 0 64-28.7 64-64V226.2H64V864c0 35.3 28.7 64 64 64zM64 162.2v64h896v-64c0-35.3-28.7-64-64-64H128c-35.3 0-64 28.7-64 64z m96 29.8c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32z m128 0c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32z" fill="#3D5AFE" p-id="2434"></path><path d="M160 160m-32 0a32 32 0 1 0 64 0 32 32 0 1 0-64 0Z" fill="#FFEA00" p-id="2435"></path><path d="M288 160m-32 0a32 32 0 1 0 64 0 32 32 0 1 0-64 0Z" fill="#FFEA00" p-id="2436"></path><path d="M864.2 449H162c-17.7 0-32-14.3-32-32s14.3-32 32-32h702.2c17.7 0 32 14.3 32 32s-14.4 32-32 32zM800.2 832H166c-17.7 0-32-14.3-32-32s14.3-32 32-32h634.2c17.7 0 32 14.3 32 32s-14.4 32-32 32zM416.1 573H162c-17.7 0-32-14.3-32-32s14.3-32 32-32h254.1c17.7 0 32 14.3 32 32s-14.3 32-32 32z" fill="#FFEA00" p-id="2437"></path><path d="M350.1 544H96c-17.7 0-32-14.3-32-32s14.3-32 32-32h254.1c17.7 0 32 14.3 32 32s-14.3 32-32 32z" fill="#FFEA00" p-id="2438"></path><path d="M224 832.1c-17.7 0-32-14.3-32-32s14.3-32 32-32h398.9C674 695.3 704 606.6 704 510.9c0-21.4-1.5-42.4-4.4-63H162c-17.7 0-32-14.3-32-32s14.3-32 32-32h523.7C668.4 325 639.2 271.2 601 225.1H64v637.8c0 35.3 28.7 64 64 64h294.6c54.7-21.9 104.2-54.4 145.7-94.8H224z" fill="#448AFF" p-id="2439"></path><path d="M192 800.1c0 17.7 14.3 32 32 32h344.3c20.1-19.6 38.4-41 54.5-64H224c-17.7 0-32 14.3-32 32z" fill="#FFFF00" p-id="2440"></path><path d="M64 161.1v64h537c-46.1-55.6-105.4-99.8-173-128H128c-35.3 0-64 28.7-64 64z m224-34.2c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.4-32 32-32z m-128 0c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.4-32 32-32z" fill="#536DFE" p-id="2441"></path><path d="M130 415.9c0 17.7 14.3 32 32 32h537.6c-3.1-21.9-7.7-43.3-13.9-64H162c-17.7 0-32 14.3-32 32z" fill="#FFFF00" p-id="2442"></path></svg>
+            <div class="title">网页颜色分析器</div>
         </div>
         <div class="markline"></div>
         <div id="setting" class="item">
@@ -25,8 +28,48 @@
             <div class="title">选项设置</div>
         </div>
     </div>
-    <div id="color-records-panel" class="color-records-wrapper js-main-wrapper">
-        <div class="sdsd"></div>
+    <div id="color-records-panel" class="color-records-wrapper js-main-wrapper hide">
+        <div class="title">颜色历史</div>
+        <div class="markline"></div>
+        <div class="container">
+            <div id="color-records-box" class="box"></div>
+            <div class="result">
+                <div id="selected-color" class="curr-color"></div>
+                <div class="show-value">
+                    <div class="format-label">HSL</div>
+                    <input id="hsl" class="color-value" value="0, 0%, 100%" readonly></input>
+                </div>
+                <div class="show-value">
+                    <div class="format-label">RGB</div>
+                    <input id="rgb" class="color-value" value="255, 255, 255" readonly></input>
+                </div>
+                <div class="show-value">
+                    <div class="format-label">HEX</div>
+                    <input id="hex" class="color-value" value="" readonly></input>
+                </div>
+            </div>
+        </div>
+        <div class="operation">
+            <div class="group">
+                <button id="confirm" type="button" class="confirm-button">确定</button>
+                <button id="cancel" type="button" class="cancel-button">取消</button>
+            </div>
+            <button id="clear" type="button" class="clear-button">清除</button>
+        </div>
+    </div>
+    <div id="color-web-panel" class="color-records-wrapper color-web-wrapper js-main-wrapper hide">
+        <div class="title">网页颜色分析</div>
+        <div class="markline"></div>
+        <div class="web-container">
+            <div id="web-colors-box" class="box"></div>
+        </div>
+        <div class="operation">
+            <div class="stance"></div>
+            <div class="group">
+                <button id="web-confirm" type="button" class="confirm-button">确定</button>
+                <button id="web-cancel" type="button" class="cancel-button">取消</button>
+            </div>
+        </div>
     </div>
 </body>
 <script src="../../public/js/jquery-3.6.0.min.js"></script>
