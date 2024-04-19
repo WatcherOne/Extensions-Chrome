@@ -66,20 +66,20 @@ window.onload = () => {
         mouseY = event.pageY
     })
 
-    // Todo: 调整一下样式
     function showTranslate (contentArr) {
         const $div = document.createElement('div')
         $div.classList.add('watcher-translate-box')
         $div.style.left = `${mouseX + 20}px`
         $div.style.top = `${mouseY + 20}px`
         let result = ''
-        contentArr.forEach(item => {
-            result += `${item.src}: ${item.dst}`
+        const length = contentArr.length
+        contentArr.forEach((item, index) => {
+            result += `${length > 1 ? `${index + 1}: ` : ''}${item.dst}<br/>`
         })
         $div.innerHTML = result
         document.body.appendChild($div)
-        // setTimeout(() => {
-        //     $div.remove()
-        // }, 2000)
+        setTimeout(() => {
+            $div.remove()
+        }, 2000)
     }
 }
