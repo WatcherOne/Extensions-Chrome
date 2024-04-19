@@ -8,7 +8,9 @@
     "description": "A Chrome Extension for Developer Use",
     "icons": {
         "16": "public/images/icon-16.png",
-        "48": "public/images/icon-48.png"
+        "32": "public/images/icon-32.png",
+        "48": "public/images/icon-48.png",
+        "128": "public/images/icon-128.png"
     },
     "options_page": "src/options/index.html",
     "action": {
@@ -31,6 +33,8 @@
         "tabs",
         "activeTab",
         "alarms",
+        "contextMenus",
+        "notifications",
         "webRequest"
     ],
     "omnibox": {

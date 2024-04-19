@@ -9,6 +9,8 @@ $(async function () {
     chrome.runtime.onMessage.addListener(async (message) => {
         if (message.action === 'popup-close') {
             window.close()
+        } else if (message.action === 'picker-web') {
+            setWebColors(message.colors || [])
         }
         return true
     })
@@ -152,65 +154,34 @@ $(async function () {
     $('#webPicker').on('click', openWebPanel)
     
     const $webBox = $('#web-colors-box')
-    let webPickerColor = ''
+    const $webSelectedColor = $('#web-select-color')
 
-    function openWebPanel () {
+    async function openWebPanel () {
         showPanel($webPanel)
-        // 不是网页 document!
-        const colors = getWebColors()
+        $webSelectedColor.html('')
+        const queryOptions = { active: true, currentWindow: true }
+        const [tab] = await chrome.tabs.query(queryOptions)
+        chrome.tabs.sendMessage(tab.id, { action: 'picker-web' })
+    }
+
+    function setWebColors (colors) {
         let contentBox = ''
         colors.forEach(color => {
             contentBox += `<div class="web-color-item" data-color="${color}" style="background-color:${color}"></div>`
         })
+        $webBox.html('')
         $webBox.append($(contentBox))
         $webBox.on('click', e => {
             const target = e.target
             const color = $(target).data('color')
-            console.log(color)
-            webPickerColor = color
+            color && $webSelectedColor.html(color)
         })
         $('#web-confirm').on('click', () => {
-            webPickerColor && copyContent(webPickerColor)
+            const color = $webSelectedColor.html()
+            color && copyContent(color, true)
             window.close()
         })
         $('#web-cancel').on('click', () => showPanel($pickerPanel))
-    }
-
-    function getWebColors () {
-        const allElements = document.getElementsByTagName('*')
-        const colors = {}
-
-        Array.from(allElements).forEach(element => {
-            const style = window.getComputedStyle(element)
-            const color = style.getPropertyValue('color')
-            const backgroundColor = style.getPropertyValue('background-color')
-            if (color !== 'rgba(0, 0, 0, 0)' && !colors[color]) {
-                colors[color] = true;
-            }
-            if (backgroundColor !== 'rgba(0, 0, 0, 0)' && !colors[backgroundColor]) {
-                colors[backgroundColor] = true
-            }
-        })
-       
-        // 获取CSS变量值
-        const root = document.documentElement
-        const cssVariables = getAllCssVariables(root)
-        Object.keys(cssVariables).forEach(variable => {
-            colors[cssVariables[variable]] = true
-        })
-        return Object.keys(colors)
-    }
-       
-    function getAllCssVariables (element) {
-        const variables = {}
-        const style = window.getComputedStyle(element)
-       
-        Array.from(style).forEach(prop => {
-            if (prop.startsWith('--')) {
-                variables[prop] = style.getPropertyValue(prop).trim()
-            }
-        })
-        return variables
     }
 
     /**********
@@ -274,8 +245,8 @@ $(async function () {
         return text
     }
 
-    function copyContent (text, direction = false) {
-        text = direction || handleColorText(text)
+    async function copyContent (text, direction = false) {
+        text = direction ? text : handleColorText(text)
         const $div = document.createElement('input')
         $div.style.cssText = 'position:absolute;top:-1000px;left:-1000px;'
         $div.value = text

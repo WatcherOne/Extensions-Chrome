@@ -37,3 +37,14 @@
     border-top: 15px solid transparent;
     border-bottom: 15px solid transparent;
 }
+
+.watcher-translate-box {
+    max-width: 200px;
+    border: 2px solid #333;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: white;
+    position: absolute;
+    z-index: 196263411123;
+    min-height: 50px;
+}

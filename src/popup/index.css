@@ -154,7 +154,7 @@ html, body {
     padding: 10px;
     border-radius: 5px;
     box-sizing: border-box;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .color-web-wrapper .web-container .box {
@@ -169,4 +169,3 @@ html, body {
     box-sizing: border-box;
     cursor: pointer;
 }
-
