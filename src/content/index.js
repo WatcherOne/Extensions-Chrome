@@ -21,13 +21,13 @@ window.onload = () => {
             const color = style.getPropertyValue('color')
             const backgroundColor = style.getPropertyValue('background-color')
             if (color !== 'rgba(0, 0, 0, 0)' && !colors[color]) {
-                colors[color] = true;
+                colors[color] = true
             }
             if (backgroundColor !== 'rgba(0, 0, 0, 0)' && !colors[backgroundColor]) {
                 colors[backgroundColor] = true
             }
         })
-       
+
         // 获取CSS变量值
         const root = document.documentElement
         const cssVariables = getAllCssVariables(root)
